@@ -8,6 +8,7 @@ class Solution {
             int high = nums.length-1;
         while(low <= high){
         int mid = (low + high) / 2;
+
         if(nums[mid] == target){
             first = mid;
             high = mid-1;
@@ -30,8 +31,7 @@ class Solution {
         }else{
            low = mid + 1;
         }
-     }
-
+    }
      return new int[]{first,last};
     }
 }
