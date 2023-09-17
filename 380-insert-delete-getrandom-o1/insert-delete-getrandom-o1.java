@@ -13,7 +13,7 @@ class RandomizedSet {
     }
     
     public int getRandom() {
-        List<Integer> list = new ArrayList<Integer>(s);
+    List<Integer> list = new ArrayList<Integer>(s);
        int r=(int)(Math.random()*s.size());
         
        return list.get(r);
