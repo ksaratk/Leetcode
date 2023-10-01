@@ -1,37 +1,50 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-            
-            int first = -1;
-            int last  = -1;
+        
+        int f = first(nums, target);
+        int l = last(nums, target);
 
-            int low = 0;
-            int high = nums.length-1;
-        while(low <= high){
-        int mid = (low + high) / 2;
+        return new int []{f,l};
 
-        if(nums[mid] == target){
-            first = mid;
-            high = mid-1;
-        } else if(nums[mid] > target){
-            high = mid-1;
-        }else{
-           low = mid + 1;
-        }
     }
-            low = 0;
-            high = nums.length-1;
 
-        while(low <= high){
-        int mid = (low + high)/2;
-        if(nums[mid] == target){
-            last = mid;
-            low = mid + 1;
-        } else if(nums[mid] > target){
-           high = mid - 1;
-        }else{
-           low = mid + 1;
+    public int first(int [] nums, int x){
+        int ans = -1;
+        int low = 0;
+        int high = nums.length-1;
+
+        while(low<=high){
+            int mid = (low+high)/2;
+
+            if(nums[mid]==x){
+                ans = mid;
+                high = mid-1;
+            } else if(nums[mid]>x){
+                high = mid-1;
+            } else{
+                low = mid+1;
+            }
         }
+        return ans;
     }
-     return new int[]{first,last};
+
+    public int last(int [] nums, int x){
+        int ans = -1;
+        int low = 0;
+        int high = nums.length-1;
+
+        while(low<=high){
+            int mid = (low+high)/2;
+
+            if(nums[mid]==x){
+                ans = mid;
+                low = mid+1;
+            } else if(nums[mid]>x){
+                high = mid-1;
+            } else{
+                low = mid+1;
+            }
+        }
+        return ans;
     }
 }
