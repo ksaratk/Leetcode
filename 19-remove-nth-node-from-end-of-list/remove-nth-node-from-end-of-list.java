@@ -14,9 +14,9 @@ class Solution {
             head = null;
             return head;
         }
-        int size = 0;
+        int size = 1;
         ListNode curr = head;
-        while(curr!=null){
+        while(curr.next!=null){
             size++;
             curr = curr.next;
         }
