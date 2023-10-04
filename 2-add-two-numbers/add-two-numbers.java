@@ -11,8 +11,8 @@
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
-       ListNode temp = new ListNode(-1); 
-       ListNode ans = temp;
+       ListNode ans = new ListNode(-1); 
+       ListNode temp = ans;
        int carry = 0;
        while(l1!=null || l2!=null || carry==1){
            int sum = 0;
