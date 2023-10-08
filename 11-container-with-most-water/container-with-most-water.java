@@ -8,9 +8,7 @@ class Solution {
             int distance = right - left;
 
             int h = Math.min(height[left], height[right]);
-
-            int water = distance*h;
-            maxWater = Math.max(water, maxWater);
+            maxWater = Math.max(distance*h, maxWater);
 
             if(height[left]<height[right]){
                 left++;
