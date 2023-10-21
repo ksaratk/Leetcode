@@ -2,25 +2,27 @@ class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(candidates); // Sort the candidates array
-        helper(new ArrayList<>(), candidates, target, 0, 0, result);
+        generateSubsets(candidates,0, new ArrayList<Integer>(),result ,target, 0);
         return result;
     }
 
-    public static void helper(List<Integer> list, int[] candidates, int target, int start, int sum, List<List<Integer>> result) {
-        if (sum == target) {
-            result.add(new ArrayList<>(list));
-            return;
-        }
-        if (sum > target) {
-            return;
-        }
-        for (int i = start; i < candidates.length; i++) {
-            if (i > start && candidates[i] == candidates[i - 1]) {
-                continue; // Skip duplicates
-            }
-            list.add(candidates[i]);
-            helper(list, candidates, target, i + 1, sum + candidates[i], result);
-            list.remove(list.size() - 1);
-        }
-    }
+    public void generateSubsets(int[] nums, int index, ArrayList<Integer> currentSubset, List<List<Integer>> list, int target, int sum) {
+	    	if(sum==target) {
+	    		list.add(new ArrayList<>(currentSubset));
+	    	}
+
+            if(sum>target){
+                return;
+            }   
+	    	for(int i=index; i<nums.length; i++) {
+	    		if(i>index && nums[i]==nums[i-1]) continue;
+	    		currentSubset.add(nums[i]);
+	    		sum+= nums[i];
+	    		generateSubsets(nums, i+1, currentSubset, list, target, sum);
+	    		currentSubset.remove(currentSubset.size()-1);
+	    		sum-= nums[i];
+	    	} 
+	    	
+	    }
 }
+
