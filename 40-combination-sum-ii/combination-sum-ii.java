@@ -9,6 +9,7 @@ class Solution {
     public void generateSubsets(int[] nums, int index, ArrayList<Integer> currentSubset, List<List<Integer>> list, int target, int sum) {
 	    	if(sum==target) {
 	    		list.add(new ArrayList<>(currentSubset));
+                return;
 	    	}
 
             if(sum>target){
