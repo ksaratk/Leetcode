@@ -1,25 +1,20 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        int [] result = new int [nums1.length];
+        Stack<Integer> stack = new Stack<Integer>();
+        Map<Integer, Integer> map = new HashMap<>();
 
-        for(int i=0; i<nums1.length; i++){
-            int digit = binarySearch(nums1[i], nums2);
-            result[i] = digit;
-        }
-        return result;
-
-    }
-
-    public int binarySearch(int value, int [] nums2){
-        boolean flag = false;
-
-        for(int i=0; i<nums2.length; i++){
-            if(nums2[i]>value && flag==true){
-                return nums2[i];
-            } else if(nums2[i] == value){
-                flag = true;
+        for(int num : nums2){
+            while(!stack.isEmpty() && num>stack.peek()){
+                map.put(stack.pop(), num);
             }
+            stack.push(num);
+        } 
+
+        int i=0;
+
+        for(int num : nums1){
+            nums1[i++] = map.getOrDefault(num, -1);
         }
-        return -1;
+        return nums1;
     }
 }
