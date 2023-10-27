@@ -4,12 +4,6 @@ class Solution {
         int n = height.length;
         int [] leftMax = new int[n];
         int [] rightMax = new int[n];
-        for(int a:leftMax){
-            System.out.print(a+" ");
-        }
-        for(int a:rightMax){
-            System.out.print(a+" ");
-        }
         leftMaxInsert(leftMax, height, n);
         rightMaxInsert(rightMax, height, n);
         for(int i=0; i<n; i++){
