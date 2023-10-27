@@ -1,40 +1,29 @@
 class Solution {
     public int trap(int[] height) {
-        int count = 0;
+        int res = 0;
         int n = height.length;
-        int [] leftMax = new int[n];
-        int [] rightMax = new int[n];
-        leftMaxInsert(leftMax, height, n);
-        rightMaxInsert(rightMax, height, n);
-        for(int i=0; i<n; i++){
-            count += Math.min(leftMax[i], rightMax[i]) - height[i];
+        int left = 0;
+        int right = n-1;
+        int leftMax = 0;
+        int rightMax = 0;
+
+        while(left<right){
+            if(height[left]<=height[right]){
+                if(height[left]>=leftMax){
+                    leftMax = height[left];
+                }else{
+                    res+= leftMax - height[left];    
+                }
+                left++;
+            }else{
+                if(height[right]>=rightMax){
+                    rightMax = height[right];
+                }else{
+                    res+= rightMax - height[right];    
+                }
+                right--;
+            }
         }
-        return count;
-    }
-
-    public void leftMaxInsert(int [] leftMax, int [] height, int n){
-        int max = Integer.MIN_VALUE;
-
-        for(int i = 0; i<n; i++){
-            if(height[i]>max){
-                max = height[i];
-                leftMax[i] = max;
-            }  else{
-                leftMax[i] = max;
-            }     
-        }        
-    }
-
-    public void rightMaxInsert(int [] rightMax, int [] height, int n){
-         int max = Integer.MIN_VALUE;
-
-        for(int i = n-1; i>=0; i--){
-            if(height[i]>max){
-                max = height[i];
-                rightMax[i] = max;
-            } else{
-                rightMax[i] = max;
-            }       
-        }        
+        return res;
     }
 }
