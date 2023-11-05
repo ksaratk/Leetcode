@@ -5,14 +5,18 @@ class Solution {
         int [][] result = new int[n][m];
 
         for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-                result[j][m-i-1] = matrix[i][j];
+            for(int j=i+1; j<m; j++){
+               int temp = matrix[i][j];
+               matrix[i][j] = matrix[j][i];
+               matrix[j][i] = temp;
             }
         }
 
-        for(int i=0; i<n; i++ ){
-            for(int j=0; j<m; j++){
-               matrix[i][j] = result[i][j];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m/2; j++){
+              int temp = matrix[i][j];
+              matrix[i][j] = matrix[i][m-j-1];
+              matrix[i][m-j-1] = temp;
             }
         }
     }
