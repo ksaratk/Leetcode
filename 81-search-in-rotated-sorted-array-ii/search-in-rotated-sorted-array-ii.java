@@ -1,34 +1,38 @@
 class Solution {
     public boolean search(int[] nums, int target) {
-         int low = 0;
-        int high = nums.length-1;
+         boolean ans = false;
+        int n = nums.length-1;
+        int left = 0;
+        int right = n;
 
-        while(low<=high){
-            int mid  = (low+high)/2;
+        while(left<=right){
+            int mid = (right+left)/2;
 
-            if(nums[mid]==target){
-                return true;
-            } 
-            
-            if(nums[low]==nums[mid] && nums[high]==nums[mid]){
-                low = low+1;
-                high = high-1;
-                continue;
-            }
-            if(nums[low]<=nums[mid]){
-                if(target>=nums[low] && target<=nums[mid]){
-                    high = mid-1;
-                }else{
-                    low = mid+1;
-                }
-            } else{
-                if(target>=nums[mid] && target<=nums[high]){
-                    low = mid+1;
-                }else{
-                    high = mid-1;
-                }
-            }
+            if(nums[mid] == target){
+                ans = true;
+                break;
+            }  
+
+            if(nums[left] == nums[mid] && nums[mid] == nums[right]) {
+            left = left+1;
+                right = right-1;
+            continue;
         }
-        return false;
+
+            if(nums[left] <= nums[mid]){
+                if(target>= nums[left] && target<= nums[mid]){
+                right = mid-1;
+            } else{
+                left = mid+1;
+            }
+        } else{
+            if(target>= nums[mid] && target<= nums[right]){
+                left = mid+1;
+            } else{
+                right = mid-1;
+            }
+        } 
+    }
+    return ans;
     }
 }
