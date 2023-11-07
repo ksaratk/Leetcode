@@ -1,18 +1,10 @@
 class Solution {
-    public int searchInsert(int[] arr, int target) {
-         int low = 0;
-        int high = arr.length-1;
-        int ans = arr.length;
-
-        while(low<=high){
-            
-            int mid = (low+high)/2;
-
-            if(arr[mid]>=target){
-                ans = mid;
-                high = mid-1;
-            }else{
-                low = mid+1;
+    public int searchInsert(int[] nums, int target) {
+        int ans = nums.length;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]>=target){
+                ans  = i;
+                return ans;
             }
         }
         return ans;
