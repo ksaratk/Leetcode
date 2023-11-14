@@ -1,48 +1,44 @@
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
-        int n = bloomDay.length;
-        if((m*k)>n) return -1;
-
-        int min  = Integer.MAX_VALUE;
-        int maxi = Integer.MIN_VALUE;
-
-        for( int i = 0; i<n; i++){
-            min = Math.min(min, bloomDay[i]);
-            maxi= Math.max(maxi, bloomDay[i]);
-        }
-        // for(int i = min; i<=maxi; i++){
-        //     if(possible(bloomDay, i, m, k)){
-        //         return i;
-        //     }
-        // }
+        
         int ans = -1;
-        while(min<=maxi){
-            int mid = (min+maxi)/2;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
 
-            if(possible(bloomDay, mid, m, k)){
-                ans = mid;
-                maxi = mid - 1;
-            } else{
-                min = mid + 1;
-            }
+        for(int i=0; i<bloomDay.length; i++){
+            min = Math.min(min, bloomDay[i]);
+            max = Math.max(max, bloomDay[i]);
         }
+       int low  = min;
+       int high = max;
+
+       while(low<=high){
+           int mid = (low+high)/2;
+
+           if(ifBouquetForm(mid, k, m, bloomDay)==true){
+               ans = mid;
+               high = mid-1;
+           } else{
+               low = mid+1;
+           }
+       }
         return ans;
     }
 
-    public boolean possible(int [] bloomDay, int day, int m, int k){
-        int bouquetsForm = 0;
-        int count = 0;
-
-        for(int i = 0; i<bloomDay.length; i++){
-            if(bloomDay[i] <= day){
-                count++;
-            } else{
-                bouquetsForm += (count/k); 
-                count = 0;
+    public boolean ifBouquetForm(int day, int k, int m, int[] bloomDay){
+        int bouquetForm = 0;
+        int bloomed = 0;
+        for(int i=0; i<bloomDay.length; i++){
+            if(day>=bloomDay[i]){
+                bloomed++;
+            }else{
+                bouquetForm += bloomed/k;
+                bloomed = 0;
             }
         }
-        bouquetsForm += count/k;
-        if(bouquetsForm >= m)return true;
+        bouquetForm += bloomed/k;
+        System.out.println(bouquetForm);
+        if(bouquetForm>=m) return true;
         return false;
-    }
+    }   
 }
