@@ -1,4 +1,3 @@
-
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -12,24 +11,15 @@
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        if(head==null || head.next==null) return null;
-       ListNode slow = head;
-        ListNode fast = head;
-        ListNode entry = head;
+         Set<ListNode> set = new HashSet();
 
-        while(fast.next!=null && fast.next.next!=null){
-            slow = slow.next;
-            fast = fast.next.next;
-
-            if(slow == fast){
-                while(entry!=slow){
-                    entry = entry.next;
-                    slow = slow.next;
-                }
-                return slow;
+        ListNode temp = head;
+        while(temp!=null){
+            if(!set.add(temp)){
+                return temp;
             }
-            
+            temp = temp.next;
         }
-        return null;
+        return temp;
     }
 }
