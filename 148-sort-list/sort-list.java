@@ -10,22 +10,64 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
+        if(head==null || head.next==null){
+            return head;
+        }
 
-        List<Integer> list = new ArrayList();
+        ListNode mid = getMid(head);
 
-         ListNode temp = head;
-         while(temp!=null){
-             list.add(temp.val);
-             temp = temp.next;
-         }
+        ListNode left = head;
+        ListNode right = mid.next;
+        mid.next = null;
 
-         Collections.sort(list);
-        ListNode newNode = new ListNode(0);
-        ListNode temp2 = newNode;
-         for(int num : list){
-             temp2.next = new ListNode(num);
-             temp2 = temp2.next;
-         }
-         return newNode.next;
+        left = sortList(left);
+        right = sortList(right);
+        return merge(left, right);
+    }
+
+    public ListNode merge(ListNode left, ListNode right){
+        if(left==null){
+            return left;
+        } else if(right==null){
+            return right;
+        }
+
+        ListNode temp = new ListNode(-1);
+        ListNode n = temp;
+        while(left!=null && right!=null){
+            if(left.val<right.val){
+                n.next = left;
+                n = n.next;
+                left = left.next;
+            } else{
+                n.next = right;
+                n = n.next;
+                right = right.next;
+            }
+        }
+
+        while(left!=null){
+            n.next = left;
+            n = n.next;
+            left = left.next;
+        }
+
+        while(right!=null){
+            n.next = right;
+            n = n.next;
+            right = right.next;
+        }
+        return temp.next;
+    }
+
+    public ListNode getMid(ListNode head){
+        ListNode fast = head.next;
+        ListNode slow = head;
+
+        while(fast!=null && fast.next!=null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
     }
 }
