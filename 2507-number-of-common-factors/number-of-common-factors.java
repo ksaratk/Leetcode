@@ -1,15 +1,14 @@
 class Solution {
     public int commonFactors(int a, int b) {
-         int min = Integer.min(a,b);
-         int count = 0;
-         int fact = 1;
-         while(fact<=min){
-            if(a%fact == 0 && b%fact == 0 ){
+        int min = (a<b) ? a : b;
+
+        int fact = 1;
+        int count =0;
+        for(int i=1; i<=min ; i++){
+            if(a%i == 0 && b%i == 0){
                 count++;
             }
-            fact = fact+1;
-         }
-         
-         return count;
+        }
+        return count;
     }
 }
