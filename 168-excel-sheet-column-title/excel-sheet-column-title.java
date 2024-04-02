@@ -11,7 +11,7 @@ class Solution {
                 ans = ans.append("Z");
                 columnNumber = columnNumber - 1;
             } else {
-                ans = ans.append((char)('A' - 1 + (columnNumber%26)));
+                ans = ans.append((char)('A' - 1 + columnNumber%26));
             }
 
             columnNumber = columnNumber/26;
