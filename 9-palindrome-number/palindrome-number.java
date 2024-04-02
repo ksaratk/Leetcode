@@ -1,24 +1,21 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        if(x < 0){
-            return false;
-        }
-
-        int no = reverseNumber(x);
-
-        if(no == x){
+        
+        int newNumber = reverse(x);
+        if(newNumber == x){
             return true;
         }
+
         return false;
     }
 
-    public int reverseNumber(int x){
+    public int reverse(int x){
+        int newNumber = 0;
 
-        int ans = 0;
         while(x>0){
-            ans = ans*10 + x%10;
+            newNumber  =  newNumber * 10 + x%10;
             x = x/10;
         }
-        return ans;
+        return newNumber;
     }
 }
