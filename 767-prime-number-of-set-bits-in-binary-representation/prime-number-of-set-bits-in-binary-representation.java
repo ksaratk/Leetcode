@@ -1,7 +1,16 @@
 class Solution {
+    boolean primes [] = new boolean[33];
     public int countPrimeSetBits(int left, int right) {
         int count = 0;
         int ans = 0;
+        Arrays.fill(primes, true);
+        for(int i = 2; i*i<=primes.length; i++){
+            if(primes[i]){
+                for(int j= i*i; j<primes.length; j=i+j){
+                    primes[j] = false;
+                }
+            }
+        }
         for(int i = left ; i<= right; i++){
             count  = isSetBit(i);
             if(isPrime(count)){
@@ -13,11 +22,7 @@ class Solution {
 
     public boolean isPrime(int num){
         if(num<=1) return false;
-
-        for(int i=2; i*i<=num; i++){
-            if(num%i == 0) return false;
-        }
-        return true;
+        return primes[num];
     }
 
     public int isSetBit(int num){
