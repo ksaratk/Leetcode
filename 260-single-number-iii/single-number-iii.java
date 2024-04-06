@@ -1,23 +1,32 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
-        int [] result = new int[2];
-         Arrays.sort(nums);
-        int ans = nums[0];
-        int count = 1;
-        int k = 0;
-       for(int i=1; i<nums.length; i++){
-            if(ans == nums[i]){
-                count++;
-            } else if(ans != nums[i] && count == 1) {
-                 result[k++] = ans;
-                 ans = nums[i];
-                count = 1;
-            } else{
-                ans = nums[i];
-                count = 1;
+
+        int[] arr=new int[2];
+
+        HashMap<Integer, Integer> hm= new HashMap<Integer, Integer>();
+        // key:value
+        for(int i=0;i<nums.length;i++){
+            if(hm.containsKey(nums[i])){
+                //update the value to +1
+                hm.put(nums[i],hm.get(nums[i])+1);
+
             }
-       }     
-       if(count==1){result[k] = ans;}
-       return result;
+            else{
+                hm.put(nums[i],1);
+            }
+        }
+
+        int index=0;
+        for(Map.Entry<Integer, Integer> entry:hm.entrySet()){
+            if(entry.getValue()==1){
+
+             arr[index++]= entry.getKey();
+             if(index==2) break;
+
+        }
+        }
+
+    return arr;
+
     }
 }
