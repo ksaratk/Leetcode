@@ -23,7 +23,7 @@ class Solution {
         int[] ans = new int[2];
         ans[0] = ans1;
         ans[1] = ans2;
-        Arrays.sort(ans);
+        // Arrays.sort(ans);
         return ans;
     }
 }
