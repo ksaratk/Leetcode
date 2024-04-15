@@ -1,21 +1,20 @@
 class Solution {
-    public String convertToTitle(int columnNumber) {
-        
-        if(columnNumber <= 26){
-            return (char)('A' - 1 + columnNumber)+"";
-        }
-        StringBuilder ans = new StringBuilder("");
+    public String convertToTitle(int n) {
+        StringBuilder result = new StringBuilder("");
 
-        while(columnNumber > 0){
-            if(columnNumber % 26 == 0){
-                ans = ans.append("Z");
-                columnNumber = columnNumber - 1;
-            } else {
-                ans = ans.append((char)('A' - 1 + columnNumber%26));
+        if(n<=26){
+          result = result.append((char)('A' - 1 + n));
+          return result.toString();
+        }
+        while(n>0){
+            if(n%26 == 0){
+                result = result.append("Z");
+                n  = n-1;
+            }else{
+                result = result.append((char)('A' - 1 + n%26));
             }
-
-            columnNumber = columnNumber/26;
+            n = n/26;
         }
-        return ans.reverse().toString();
+        return result.reverse().toString();
     }
 }
