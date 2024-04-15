@@ -1,5 +1,14 @@
 class Solution {
+
     public int trailingZeroes(int n) {
-        return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
+
+        int count = 0;
+        int k = 5;
+        while(k<=n) {
+            count += (int)(n/k);
+            k *= 5;
+        }
+        return count;
+
     }
 }
