@@ -1,17 +1,17 @@
 class Solution {
     public int singleNumber(int[] nums) {
-       
-        for(int i=0; i<nums.length; i++){
-            int flag = 0;
+        long ans = 0;
+        int setbit = 0;
+        int p = 0;
+        for(int i=0; i<32; i++){
+            setbit = 0;
             for(int j=0; j<nums.length; j++){
-                if(nums[i] == nums[j]){
-                    flag++;
-                }
+                setbit += nums[j]&1;
+                nums[j] = nums[j]>>1;
             }
-            if(flag == 1){
-                return nums[i];
-            }
-        }
-        return 0;
+            setbit = setbit%3; 
+            ans +=  setbit * (long)Math.pow(2, p++); 
+        }       
+        return (int)ans;
     }
 }
