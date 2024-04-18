@@ -28,10 +28,10 @@ class Solution {
         int count = 0;
 
         while (i > 0) {
-            if (i % 2 == 1) {
+            if ((i&1) == 1) {
                 count++;
             }
-            i = i / 2;
+            i = i>>1;
         }
         return count;
     }
