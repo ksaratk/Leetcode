@@ -14,8 +14,7 @@ class Solution {
                 }
                 nums[j] = nums[j]>>1;
             }
-            setbit = zeroCount*oneCount;
-            ans += setbit;
+            ans += (zeroCount*oneCount);
         }
         return ans;
     }
