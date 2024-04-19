@@ -1,10 +1,8 @@
 class Solution {
     public int countNegatives(int[][] grid) {
         int count = 0;
-        int index = 0;
         for(int i=0; i<grid.length; i++){
-                index = binarySearch(grid[i]);
-                count += grid[i].length-index;
+                count += grid[i].length-binarySearch(grid[i]);
         }
         return count;
     }
