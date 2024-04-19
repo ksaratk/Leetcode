@@ -1,17 +1,20 @@
 class Solution {
     public int countNegatives(int[][] grid) {
-        int count = 0;
+        int ans = 0;
         for(int i=0; i<grid.length; i++){
-                count += grid[i].length-binarySearch(grid[i]);
+            int index = binarySearch(grid[i]);
+            if(index!=-1){
+                ans += grid[i].length-index;
+            }
         }
-        return count;
+        return ans;
     }
     
     
     public int binarySearch(int [] arr){
         int low = 0;
         int high = arr.length-1;
-        int ans = arr.length;
+        int ans = -1;
         while(low<=high){
             int mid = (low+high)/2;
             
