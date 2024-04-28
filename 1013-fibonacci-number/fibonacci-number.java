@@ -9,7 +9,6 @@ class Solution {
             return n;
         }
         
-     int subAns = findFib(n-1) + fib(n-2);
-        return subAns;
+     return findFib(n-1) + fib(n-2);
     }
 }
