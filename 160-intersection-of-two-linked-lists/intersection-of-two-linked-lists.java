@@ -14,12 +14,11 @@ public class Solution {
         ListNode tempA = headA;
         ListNode tempB = headB;
         
-        while(tempA != null || tempB != null){
-            if(tempA == tempB) return tempB;
+        while(tempA != tempB){
             tempA = (tempA!=null) ? tempA.next : headB;
             tempB = (tempB!=null) ? tempB.next : headA;
             
         }
-        return null;
+        return tempA;
     }
 }
