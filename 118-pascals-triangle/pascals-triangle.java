@@ -2,10 +2,10 @@ class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> list = new ArrayList<>();
         List<Integer> temp = null;
-        for(int i = 1; i<=numRows; i++){
+        for(int i = 0; i<numRows; i++){
             temp = new ArrayList<>();
-            for(int j=1; j<=i; j++){
-                int no = ncr(i-1, j-1);
+            for(int j=0; j<=i; j++){
+                int no = ncr(i, j);
                 temp.add(no);
             }
             list.add(temp);
