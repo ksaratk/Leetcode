@@ -2,8 +2,9 @@ class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         int n = nums.length;
         Set<List<Integer>> set = new HashSet<>();
+        Set<Integer> temp = null;
         for(int i=0; i<n; i++){
-             Set<Integer> temp = new HashSet<>();
+            temp = new HashSet<>();
             for(int j=i+1; j<n; j++){
                     int sum = -(nums[i]+nums[j]);
                     if(temp.contains(sum)){
