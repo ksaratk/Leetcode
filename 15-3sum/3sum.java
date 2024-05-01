@@ -5,8 +5,9 @@ class Solution {
         Set<Integer> temp = null;
         for(int i=0; i<n; i++){
             temp = new HashSet<>();
+            int sum = 0;
             for(int j=i+1; j<n; j++){
-                    int sum = -(nums[i]+nums[j]);
+                    sum = -(nums[i]+nums[j]);
                     if(temp.contains(sum)){
                         List<Integer> list = Arrays.asList(nums[i],nums[j], sum);
                         list.sort(null);
