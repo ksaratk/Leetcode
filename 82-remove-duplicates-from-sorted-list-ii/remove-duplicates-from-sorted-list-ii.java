@@ -21,12 +21,13 @@ class Solution {
                 while(temp.next!=null && temp.val == temp.next.val){
                         temp.next = temp.next.next;
                 }
-                if (temp.next == null) {
-    prev.next = null; // Update the previous node's next pointer to null
-} else {
-    temp = temp.next; // Move to the next node after handling duplicates
-    prev.next = temp; // Update the previous node's next pointer
-}
+                if(temp.next == null) {
+                    prev.next = null;
+                    } 
+                else {
+                    temp = temp.next;
+                    prev.next = temp;
+                    }  
             }else{
                 temp = temp.next;
                 prev = prev.next;
