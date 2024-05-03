@@ -15,40 +15,27 @@
  */
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-    List<List<Integer>> result = new ArrayList<>();
-
-    if (root == null) {
-        return result;
-    }
-
-    Queue<TreeNode> nodesQueue = new LinkedList<>();
-    nodesQueue.add(root);
-    boolean leftToRight = true;
-
-    while (!nodesQueue.isEmpty()) {
-        int size = nodesQueue.size();
-        List<Integer> row = new ArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            TreeNode node = nodesQueue.poll();
-            row.add(node.val);
-
-            if (node.left != null) {
-                nodesQueue.add(node.left);
+        List<List<Integer>> list = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if(root == null) return list;
+        queue.add(root);
+        boolean leftToRight = true;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> subList = new LinkedList<>();
+            for(int i = 0; i<size; i++){
+                if(queue.peek().left != null) queue.add(queue.peek().left);
+                if(queue.peek().right != null) queue.add(queue.peek().right);
+                subList.add(queue.peek().val);
+                queue.poll();
             }
-            if (node.right != null) {
-                nodesQueue.add(node.right);
+           
+            if(!leftToRight){
+                Collections.reverse(subList);
             }
+            list.add(subList);
+            leftToRight = !leftToRight;
         }
-
-        if (!leftToRight) {
-            Collections.reverse(row);
-        }
-        result.add(row);
-        leftToRight = !leftToRight;
+        return list;
     }
-
-    return result;
-}
-
 }
