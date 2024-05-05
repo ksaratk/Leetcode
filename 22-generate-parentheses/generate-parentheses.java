@@ -11,11 +11,12 @@ class Solution {
 	    		return;
 	    	}
 	    	
-	    	if(open<close) {
-	    		helper (open, close-1, ans+")", list);
-	    	}
+	    	 
 	    	if(open!=0) {
 	    		helper (open-1, close, ans+"(", list);	
-	    	}    		    	
+	    	}
+        if(open<close) {
+	    		helper (open, close-1, ans+")", list);
+	    	}
 	    }
 }
