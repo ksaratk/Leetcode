@@ -5,11 +5,7 @@ class Solution {
          String[] str2 = t.split("");
          Arrays.sort(str1);
          Arrays.sort(str2);
-         for(int i=0; i<str1.length; i++){
-             if(!str1[i].equals(str2[i])){
-                 return false;
-             }
-         }
-        return true;
+         if(Arrays.equals(str1, str2)) return true;
+        return false;
     }
 }
