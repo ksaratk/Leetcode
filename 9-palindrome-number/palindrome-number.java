@@ -7,6 +7,7 @@ class Solution {
         System.out.print(reverse);
         System.out.print(reverse);
         System.out.print(reverse);System.out.print(reverse);
+        System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);System.out.print(reverse);
        if(reverse == x){
         return true;
        }
