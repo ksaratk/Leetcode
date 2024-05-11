@@ -13,7 +13,7 @@ class Solution {
     public int reverseNumber(int x){
         int number = 0;
 
-        while(x>0){
+        while(x!=0){
             number = number*10+x%10;
             x = x/10;
         }
