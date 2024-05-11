@@ -4,6 +4,9 @@ class Solution {
        int temp = x;
        int reverse = reverseNumber(x);
        System.out.print(reverse);
+        System.out.print(reverse);
+        System.out.print(reverse);
+        System.out.print(reverse);System.out.print(reverse);
        if(reverse == x){
         return true;
        }
