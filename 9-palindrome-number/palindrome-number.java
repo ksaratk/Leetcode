@@ -3,6 +3,7 @@ class Solution {
        if(x<0) return false; 
        int temp = x;
        int reverse = reverseNumber(x);
+       System.out.print(reverse);
        if(reverse == x){
         return true;
        }
