@@ -16,7 +16,7 @@ class Solution {
                 return;
             }   
 	    	for(int i=index; i<nums.length; i++) {
-	    		if(i>index && nums[i]==nums[i-1]) continue;
+	    		if(i!=index && nums[i]==nums[i-1]) continue;
 	    		currentSubset.add(nums[i]);
 	    		sum+= nums[i];
 	    		generateSubsets(nums, i+1, currentSubset, list, target, sum);
