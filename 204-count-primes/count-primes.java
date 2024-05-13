@@ -3,7 +3,7 @@ class Solution {
         boolean [] prime = new boolean [n];
         
         Arrays.fill(prime, true);
-        for(int i = 2; i*i<n; i++){
+        for(int i = 2; i*i<=n; i++){
             if(prime[i]){
                 for(int j = i*i; j<n; j = j+i){
                     prime[j] = false;
