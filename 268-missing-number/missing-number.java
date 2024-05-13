@@ -5,8 +5,8 @@ class Solution {
             sum += nums[i];
         }
         
-        int n =nums.length+1;
-        n = n*(n-1)/2;
-        return Math.abs(sum-n);
+        int n =nums.length;
+        n = n*(n+1)/2;
+        return n-sum;
     }
 }
