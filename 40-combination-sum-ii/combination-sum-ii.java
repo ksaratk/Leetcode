@@ -1,29 +1,32 @@
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(candidates); // Sort the candidates array
-        generateSubsets(candidates,0, new ArrayList<Integer>(),result ,target, 0);
-        return result;
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(candidates);
+        int index = 0;
+        int sum = 0;
+        List<Integer> temp = new ArrayList<>();
+        helper(candidates, ans, index, sum, temp, target);
+        return ans;    
     }
-
-    public void generateSubsets(int[] nums, int index, ArrayList<Integer> currentSubset, List<List<Integer>> list, int target, int sum) {
-	    	if(sum==target) {
-	    		list.add(new ArrayList<>(currentSubset));
-                return;
-	    	}
-
-            if(sum>target){
-                return;
-            }   
-	    	for(int i=index; i<nums.length; i++) {
-	    		if(i!=index && nums[i]==nums[i-1]) continue;
-	    		currentSubset.add(nums[i]);
-	    		sum+= nums[i];
-	    		generateSubsets(nums, i+1, currentSubset, list, target, sum);
-	    		currentSubset.remove(currentSubset.size()-1);
-	    		sum-= nums[i];
-	    	} 
-	    	
-	    }
+    
+    public void helper(int [] candidates, List<List<Integer>> ans, int index, int sum, List<Integer> temp, int target){
+        if(sum == target){
+            ans.add(new ArrayList(temp));
+            return;
+        }
+        
+        if(sum>target){
+            return;
+        }
+        
+        for(int i = index; i<candidates.length; i++){
+            if(i!=index && candidates[i]==candidates[i-1]) continue;
+            
+            sum += candidates[i];
+            temp.add(candidates[i]);
+            helper(candidates, ans, i+1,  sum, temp,  target);
+            sum -= candidates[i];
+            temp.remove(temp.size()-1);
+        }
+    }
 }
-
