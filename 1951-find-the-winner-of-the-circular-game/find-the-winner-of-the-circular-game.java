@@ -4,16 +4,17 @@ class Solution {
         for(int i=1; i<=n; i++){
            list.add(i); 
         }
-        return helper(list, k, 0);
+        
+       return helper(list, k, 0);
     }
     
-    int helper(List <Integer>list, int k, int index){
-        if(list.size()==1){
+    public int helper(List<Integer> list, int k, int index){
+        if(list.size() == 1){
             return list.get(0);
         }
         
-        index = (index+(k-1))%list.size();
+        index = (k+index-1)%list.size();
         list.remove(index);
-       return helper(list, k, index);
+        return helper(list, k, index);
     }
 }
