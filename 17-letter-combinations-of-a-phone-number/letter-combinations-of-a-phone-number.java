@@ -1,30 +1,34 @@
 class Solution {
     public List<String> letterCombinations(String digits) {
-        if(digits.isEmpty()) return new ArrayList();
-        List<String> result  = helper("", digits, new ArrayList<String>());
-        return result;
+        List<String> ans = new ArrayList<>();
+        if(digits.isEmpty()) return ans;
+        helper(digits, "", ans);
+        return ans;
     }
-
-    public List<String> helper(String p, String up, List<String> result){
+    
+    public void helper(String up, String p, List<String> list){
         if(up.isEmpty()){
-            result.add(p);
-            return result;
+            list.add(p);
+            return;
         }
-
+        
         int digit = up.charAt(0) - '0';
-
-        int start = (digit-2)*3;
-        int limit = (digit-1)*3;
+        int start = (digit - 2)*3;
+        int end = (digit-1)*3;
         
-        if(digit == 8 || digit == 9) start = start+1;
-        if(digit == 8 || digit == 7) limit = limit+1;
-        if(digit == 9) limit = limit+2;
-        
-
-        for(int i = start; i<limit; i++){
-            char ch = (char)(i + 'a');
-            helper(p+ch, up.substring(1), result);
+        if(digit == 7){
+            end +=1;
+        } else if(digit == 8){
+            start += 1;
+            end += 1;
+        } else if(digit == 9){
+            start += 1;
+            end += 2;
         }
-        return result;
+        
+        for(int i = start; i<end; i++){
+            char ch = (char)(i+'a');
+            helper(up.substring(1), p + ch, list);
+        }
     }
 }
