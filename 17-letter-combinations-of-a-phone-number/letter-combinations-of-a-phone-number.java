@@ -12,7 +12,7 @@ class Solution {
             return;
         }
         
-        int digit = up.charAt(0) - '0';
+        int digit = Integer.parseInt(up.charAt(0)+"");
         int start = (digit - 2)*3;
         int end = (digit-1)*3;
         
