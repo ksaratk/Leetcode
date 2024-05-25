@@ -29,8 +29,8 @@ class Solution {
         
         if((n+m)%2 == 1) return (double)m1;
         System.out.println(m1 +  " " + m2);
-        double ans =  (double)m1+(double)m2;
-        return ans/2.0;
+        // double ans =  (double)m1+(double)m2;
+        return (m1+m2)/2.0;
     }
     
 }
