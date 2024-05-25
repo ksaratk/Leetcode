@@ -27,9 +27,8 @@ class Solution {
             k++;
         }
         
-        if((n+m)%2 == 1) return (double)m1;
+        if((n+m)%2 == 1) return m1;
         System.out.println(m1 +  " " + m2);
-        // double ans =  (double)m1+(double)m2;
         return (m1+m2)/2.0;
     }
     
