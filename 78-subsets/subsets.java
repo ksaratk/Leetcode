@@ -7,12 +7,16 @@ class Solution {
     }
     
     public void helper(int [] nums, List<List<Integer>> ans, int index, List<Integer> list){
-        ans.add(new ArrayList(list));
-        
-        for(int i = index; i<nums.length; i++){
-            list.add(nums[i]);
-            helper(nums, ans, i + 1, list);
-            list.remove(list.size()-1);
+       if (index == nums.length) {
+            ans.add(new ArrayList<>(list));
+            return;
         }
+    
+        // Include the current element and move to the next
+        list.add(nums[index]);
+        helper(nums, ans, index + 1, list);
+        list.remove(list.size() - 1); // Backtrack to remove the current element
+        helper(nums, ans, index + 1, list);
+
     }
 }
