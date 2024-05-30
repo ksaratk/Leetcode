@@ -11,7 +11,7 @@ private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] 
       list.add(new ArrayList<>(tempList));
        return;
    } 
-      for(int i = 0; i < nums.length; i++){ 
+      for(int i= 0; i < nums.length; i++){ 
          if(tempList.contains(nums[i])) continue; // element already exists, skip
          tempList.add(nums[i]);
          backtrack(list, tempList, nums);
