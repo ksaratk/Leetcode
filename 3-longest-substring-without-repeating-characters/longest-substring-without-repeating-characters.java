@@ -6,7 +6,7 @@ class Solution {
         
         for(int right = 0; right<s.length(); right++){
             
-            while(curr.contains(String.valueOf(s.charAt(right)))){
+            while(curr.contains(Character.toString(s.charAt(right)))){
               curr =  curr.substring(1);
             }
             curr += s.charAt(right);            
@@ -14,4 +14,4 @@ class Solution {
         }
         return longest;
     }
-} 
+}
