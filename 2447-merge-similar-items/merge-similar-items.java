@@ -4,7 +4,7 @@ class Solution {
         
         // Merge items1 into the weights array
         for (int[] item : items1) {
-            weights[item[0]] += item[1];
+            weights[item[0]] = item[1];
         }
         
         // Merge items2 into the weights array
