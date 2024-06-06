@@ -28,7 +28,6 @@ class Solution {
         }
         
         if((n+m)%2 == 1) return m1;
-        System.out.println(m1 +  " " + m2);
         return (m1+m2)/2.0;
     }
     
