@@ -7,7 +7,7 @@ class Solution {
                 int distance = j-i;
                 int minHeight = Math.min(height[i], height[j]);
                 ans = Math.max(ans, distance * minHeight);
-            if(height[i] < height[j]) i++;
+            if(height[i] <= height[j]) i++;
             else j--;
         }
         return ans;
