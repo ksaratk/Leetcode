@@ -1,40 +1,28 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
-        int col = 1;
-        int[] r = new int[matrix.length]; int []c = new int[matrix[0].length];
+        int max = Integer.MAX_VALUE+9;
         for(int i=0; i<matrix.length; i++){
             for(int j=0; j<matrix[0].length; j++){
-                if(matrix[i][j] == 0){
-                   if(j!=0) {
-                    matrix[0][j] = 0;   
-                   }else{
-                    col = 0;                       
+               if(matrix[i][j] == 0){
+                   //row
+                   for(int k=0; k<matrix.length; k++){
+                       if(matrix[k][j]!=0)
+                         matrix[k][j] = max;                           
                    }
-                    
-                    matrix[i][0] = 0;
-                    
-                }
+                   //col
+                   for(int k=0; k<matrix[0].length; k++){
+                       if(matrix[i][k]!=0)
+                       matrix[i][k] = max;
+                   }
+               } 
             }
         }
-        
-        for(int i=1; i<matrix.length; i++){
-            for(int j=1; j<matrix[0].length; j++){
-                if(matrix[i][0] == 0 || matrix[0][j] == 0){
+        for(int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix[0].length; j++){
+                if(matrix[i][j] == max){
                     matrix[i][j] = 0;
                 }
             }
         }
-        
-        if(matrix[0][0] == 0){
-              for(int i = 0; i<matrix[0].length; i++){
-               matrix[0][i] = 0;       
-              }    
-            }
-        
-         if(col == 0){
-              for(int i = 0; i<matrix.length; i++){
-                matrix[i][0] = 0;
-              }    
-            }
     }
 }
